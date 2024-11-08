@@ -1,0 +1,18 @@
+# gitignore = 
+*.csv
+*.log
+*.txt
+*.json
+*.xml
+*.html
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.tif
+*.tiff
+*.bmp
+*.ico
+*.svg
+*.eps
+*.pdf
