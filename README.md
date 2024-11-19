@@ -1,4 +1,5 @@
 # SemanticProximity
 - Made by Keungoui Kim, Jisoo Hur
 
-Hello world
+# Link to the dataset
+- [Dataset]()
