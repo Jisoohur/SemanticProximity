@@ -1,7 +1,7 @@
 #######################################################################
 ##  Made by: Dr. Keungoui Kim
-##  Title: Specilized Science with BERTopic 
-##  goal : Extract data source from WoS
+##  Title: Semantic Proximity Research 
+##  goal : 04. Extract data source from WoS
 ##  Data set: WoS
 ##  Time Span: 
 ##  Variables
