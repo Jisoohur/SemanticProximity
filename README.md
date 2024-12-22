@@ -1,4 +1,4 @@
-# SemanticProximity
+# Semantic proximity in quantum and general scientific publications: A BERTopic approach to mapping regional knowledge spaces 
 - Made by Keungoui Kim, Jisoo Hur
 
 # Link to the dataset
