@@ -1,17 +1,12 @@
 #######################################################################
 ##  Made by: Dr. Keungoui Kim
 ##  Title: Semantic Proximity Research 
-##  goal : 04. Extract data source from WoS
+##  goal : 04. Shiny Codes
 ##  Data set: WoS
-##  Time Span: 
-##  Variables
-##      Input: 
-##      Output:  
-##  Methodology: BERTopic
 ##  Time-stamp: :  
-##  Notice :
+## https://awekim.shinyapps.io/SemanticProximity_shiny/
 
-# Data generated from SemanticProximity_R
+# Data generated from ShinyDataPreparation_R
 
 library(shiny)
 library(dplyr)
