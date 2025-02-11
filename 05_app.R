@@ -1,17 +1,23 @@
 #######################################################################
 ##  Made by: Keungoui Kim (Ph.D.) & Jisoo Hur (Ph.D.)
 ##  Title: Semantic Proximity Research 
-##  goal : 04. Shiny Codes
+##  goal : 05. Shiny Codes
 ##  Data set: WoS
+##  Time Span: 
+##  Variables
+##      Input: 
+##      Output:  
+##  Methodology: BERTopic & BERT Similarity
 ##  Time-stamp: :  
-## https://awekim.shinyapps.io/SemanticProximity_shiny/
+##  Notice :
 
-# Data generated from ShinyDataPreparation_R
+# Data generated from SemanticProximity_R
 
 library(shiny)
 library(dplyr)
 library(magrittr)
 library(tmap)
+library(terra)
 library(sf)
 library(mapview)
 library(leaflet)
@@ -29,7 +35,7 @@ qsp_shiny_ui <- shinyUI(fluidPage(
     sidebarPanel(
       # map
       leafletOutput(outputId = "map", width = "100%"), # "width="100%", height = "100%" width = "100vh"
-      h6("*skyblue: Top 100 Qunatum Tech Science REgions, orange: selected regions"),
+      h6("*skyblue: Top 100 Qunatum Tech Science Regions, orange: selected regions"),
       
       selectInput(inputId = "NUTS_ID", 
                   label = "Choose a Region",
@@ -79,18 +85,21 @@ qsp_shiny_server <- function(input, output) {
   datasetInput_map <- reactive({
     load(file="ind_sf.RData")
     load(file="eu.reg.map.RData")
+    
+    filtered_data <- ind_sf %>% filter(NUTS_ID==input$NUTS_ID)
+    bounds <- st_bbox(filtered_data)  
+    
     eu.reg.map <- eu.reg.map +
-      tm_shape(ind_sf %>% filter(NUTS_ID==input$NUTS_ID)) +
+      tm_shape(ind_sf %>% filter(NUTS_ID==input$NUTS_ID), bbox = bounds) +
       # tm_compass() + tm_scale_bar() +  tmap_options(check.and.fix = TRUE) +
       # tm_layout(frame = FALSE, legend.outside = FALSE, legend.show = FALSE) +
       # tmap_options(output.size = 10) +
-      tm_fill("orange") + tm_borders("grey25", alpha=.5)
+      tm_fill("orange") + tm_borders("grey25", fill_alpha=.5)
     # tm_view(set.zoom.limits = c(10, 20))
   })
   
   output$map <- renderLeaflet({
-    datasetInput_map() %>% tmap_leaflet() %>%
-      setView(lat=55, lng=15, zoom=3)# setView(lat=57.5, lng=45, zoom=3)
+    datasetInput_map() %>% tmap_leaflet() #%>% setView(lat=55, lng=15, zoom=3)# setView(lat=57.5, lng=45, zoom=3)
   })
   
   # Publication table
